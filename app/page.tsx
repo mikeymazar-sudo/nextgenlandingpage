@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import PainPoints from "@/components/PainPoints";
 import Features from "@/components/Features";
-import DealAnalyzer from "@/components/DealAnalyzer";
+import SignUpCredits from "@/components/SignUpCredits";
 import Pricing from "@/components/Pricing";
 import SocialProof from "@/components/SocialProof";
 import WaitlistCTA from "@/components/WaitlistCTA";
@@ -16,7 +16,7 @@ export default function Home() {
         <Hero />
         <PainPoints />
         <Features />
-        <DealAnalyzer />
+        <SignUpCredits />
         <Pricing />
         <SocialProof />
         <WaitlistCTA />

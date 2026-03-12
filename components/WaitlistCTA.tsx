@@ -1,20 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Check, Mail } from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 export default function WaitlistCTA() {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email.includes("@")) {
-      setSubmitted(true);
-    }
-  };
-
   return (
     <section
       id="waitlist"
@@ -31,80 +20,32 @@ export default function WaitlistCTA() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
-            Ready to Transform Your
-            <br />
-            Wholesaling Business?
+          <div className="inline-flex items-center gap-2 rounded-full border border-brand-purple/30 bg-brand-purple/10 px-4 py-1.5 text-sm font-medium text-brand-purple">
+            <Sparkles className="h-4 w-4" />
+            No credit card required
+          </div>
+
+          <h2 className="mt-6 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
+            Ready to Close More Deals?
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-lg text-slate-400">
-            Join hundreds of wholesalers on the waitlist. Be first to get access
-            and lock in founding member pricing.
+            Join NextGen Realty today and get 500 free credits to start
+            finding, analyzing, and closing wholesale deals faster.
           </p>
-        </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="mt-10"
-        >
-          <AnimatePresence mode="wait">
-            {!submitted ? (
-              <motion.form
-                key="form"
-                onSubmit={handleSubmit}
-                initial={{ opacity: 1 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="flex flex-col gap-3 sm:flex-row sm:gap-0"
-              >
-                <div className="relative flex-1">
-                  <Mail className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email address"
-                    required
-                    className="w-full rounded-xl border border-white/10 bg-surface-card py-4 pl-11 pr-4 text-white placeholder:text-slate-500 focus:border-brand-blue/50 focus:outline-none focus:ring-2 focus:ring-brand-blue/20 sm:rounded-r-none sm:border-r-0"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="group flex items-center justify-center gap-2 rounded-xl bg-brand-blue px-8 py-4 text-sm font-semibold text-white transition-all hover:bg-brand-blue-dark sm:rounded-l-none"
-                >
-                  Join the Waitlist
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                </button>
-              </motion.form>
-            ) : (
-              <motion.div
-                key="success"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="flex flex-col items-center gap-4"
-              >
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-green/20">
-                  <Check className="h-8 w-8 text-brand-green" />
-                </div>
-                <div>
-                  <p className="text-xl font-bold text-white">
-                    You&apos;re on the list!
-                  </p>
-                  <p className="mt-1 text-sm text-slate-400">
-                    We&apos;ll email you when NextGen Realty is ready to launch.
-                  </p>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          {!submitted && (
-            <p className="mt-4 text-xs text-slate-600">
-              No spam. No credit card. Unsubscribe anytime. We respect your
-              inbox.
+          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <a
+              href="#signup"
+              className="group flex items-center gap-2 rounded-xl bg-brand-purple px-8 py-4 text-sm font-semibold text-white transition-all hover:bg-brand-purple/90 hover:shadow-lg hover:shadow-brand-purple/25"
+            >
+              <Sparkles className="h-4 w-4" />
+              Get 500 Free Credits
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </a>
+            <p className="text-sm text-slate-500">
+              500 credits · No card required · Cancel anytime
             </p>
-          )}
+          </div>
         </motion.div>
       </div>
     </section>
